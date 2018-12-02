@@ -94,6 +94,22 @@ extern int SDL_SendKeyboardKey(int index, Uint8 state, SDL_scancode scancode);
             eventScanCode = SDL_SCANCODE_F1 + (eventScanCode-SDL_SCANCODE_1);
             eventModifier &= ~GSEVENT_FLAG_LCMD;
         }
+
+            // Map CMD-Minus to FN11
+        if(eventModifier & GSEVENT_FLAG_LCMD &&
+           eventScanCode == SDL_SCANCODE_MINUS) {
+
+            eventScanCode = SDL_SCANCODE_F11;
+            eventModifier &= ~GSEVENT_FLAG_LCMD;
+        }
+
+            // Map CMD-Plus to F12
+        if(eventModifier & GSEVENT_FLAG_LCMD &&
+           eventScanCode == SDL_SCANCODE_EQUALS) {
+
+            eventScanCode = SDL_SCANCODE_F12;
+            eventModifier &= ~GSEVENT_FLAG_LCMD;
+        }
     }
     
     if(!IS_IOS9) { // preserved for backward compatiblity
