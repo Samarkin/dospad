@@ -67,6 +67,12 @@
 	return YES;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    [self importFile:url];
+    return YES;
+}
+
 -(SDL_uikitopenglview*)screen
 {
     return screenView;
